@@ -98,7 +98,7 @@ class Example3(QWidget):
         label = QLabel(self)
         pixmap = QPixmap()
         label.setPixmap(pixmap)
-        # Code game
+        # Code game_
 
 
 if __name__ == '__main__':
