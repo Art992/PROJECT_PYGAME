@@ -71,6 +71,8 @@ class Menu:
                         exit()
                     elif punkt == 2:
                         Draw()
+                    elif punkt == 3:
+                        Draw_2()
             window.blit(info, (0, 0))
             window.blit(screen, (0, 30))
             pygame.display.flip()
@@ -95,8 +97,33 @@ class Draw:
             pass
 
 
+class Draw_2:
+    def __init__(self):
+        super().__init__()
+        self.draw()
+
+    def draw(self):
+        size = width, height = 800, 600
+        screen = pygame.display.set_mode(size)
+        screen.fill((0, 0, 200))
+        font = pygame.font.Font(None, 50)
+        text = font.render("Управление", 1, (11, 0, 77))
+        text_x = width // 2 - text.get_width() // 2
+        text_y = height // 2 - text.get_height() // 2
+        screen.blit(text, (text_x, text_y))
+        text_w = text.get_width()
+        text_h = text.get_height()
+        screen.blit(text, (text_x, text_y))
+        pygame.draw.rect(screen, (0, 0, 155), (text_x - 10, text_y - 10,
+                                               text_w + 20, text_h + 20), 1)
+        pygame.display.flip()
+        while pygame.event.wait().type != pygame.QUIT:
+            pass
+
+
 pygame.font.init()
-punkts = [(350, 300, u'Играть', (11, 0, 77), (0, 0, 204), 0),
+punkts = [(350, 260, u'Играть', (11, 0, 77), (0, 0, 204), 0),
+          (310, 300, u'Управление', (11, 0, 77), (0, 0, 204), 3),
           (315, 340, u'Об авторах', (11, 0, 77), (0, 0, 204), 2),
           (350, 380, u'Выход', (11, 0, 77), (0, 0, 204), 1)]
 game = Menu(punkts)
