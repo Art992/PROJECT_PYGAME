@@ -69,14 +69,35 @@ class Menu:
                         done = False
                     elif punkt == 1:
                         exit()
+                    elif punkt == 2:
+                        Draw()
             window.blit(info, (0, 0))
             window.blit(screen, (0, 30))
             pygame.display.flip()
 
 
+class Draw:
+    def __init__(self):
+        super().__init__()
+        self.draw()
+
+    def draw(self):
+        size = width, height = 800, 600
+        screen = pygame.display.set_mode(size)
+        screen.fill((0, 0, 255))
+        font = pygame.font.Font(None, 50)
+        text = font.render("Авторы", 1, (11, 0, 77))
+        text_x = width // 2 - text.get_width() // 2
+        text_y = height // 2 - text.get_height() // 2
+        screen.blit(text, (text_x, text_y))
+        pygame.display.flip()
+        while pygame.event.wait().type != pygame.QUIT:
+            pass
+
+
 pygame.font.init()
 punkts = [(350, 300, u'Играть', (11, 0, 77), (0, 0, 204), 0),
-          (325, 340, u'Об авторе', (11, 0, 77), (0, 0, 204), 1),
-          (350, 380, u'Выход', (11, 0, 77), (0, 0, 204), 2)]
+          (315, 340, u'Об авторах', (11, 0, 77), (0, 0, 204), 2),
+          (350, 380, u'Выход', (11, 0, 77), (0, 0, 204), 1)]
 game = Menu(punkts)
 game.menu()
